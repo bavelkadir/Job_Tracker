@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Serialization;
 
 namespace Job_Tracker.Models
 {
@@ -41,7 +42,7 @@ namespace Job_Tracker.Models
 
                 int chocie = MenuUI.ShowMenu("🧾 JOB APPLICATION MANAGER", _menuOptions);
 
-                switch (choice)
+                switch (chocie)
                 {
                     case 0:
                         AddApplication();
@@ -260,7 +261,7 @@ namespace Job_Tracker.Models
             var newStatus = ReadStatusFromUser();
 
             // Uppdatera statusen i JobManager
-            bool updated = _manager.UpdateStatus(companyName, newStatus);
+            bool updated = _manager.UpdateStatus(companyName, newStatus);   
 
             // Visa resultatmeddelande baserat på om uppdateringen lyckades eller inte
             if (updated)
