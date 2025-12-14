@@ -119,15 +119,21 @@ namespace Job_Tracker.Models
                 "COMPANY".PadRight(15) +
                 "POSITION".PadRight(20) +
                 "STATUS".PadRight(12) +
+                "DAYS".PadRight(6) +
+                "RESPONSE".PadRight(18) +
                 "DATE".PadRight(12) +
                 "SALARY"
             );
             Console.ResetColor();
 
-            Console.WriteLine(new string('-', 75));
+            Console.WriteLine(new string('-', 98));
 
             foreach (var app in apps)
             {
+                string responseInfo = app.ResponseDate.HasValue
+                    ? $"Svar: {app.ResponseDate.Value.ToShortDateString()}"
+                    : "Svar ej mottaget";
+
                 SetStatusColor(app.Status);
 
                 Console.Write(app.CompanyName.PadRight(15));
@@ -136,10 +142,13 @@ namespace Job_Tracker.Models
 
                 Console.ResetColor();
 
+                Console.Write(app.GetDaysSinceApplication().ToString().PadRight(6)); // ✅ din metod
+                Console.Write(responseInfo.PadRight(18));
                 Console.Write(app.ApplicationDate.ToShortDateString().PadRight(12));
                 Console.WriteLine($"{app.SalaryExpectation} kr");
             }
         }
+        
 
 
         // --------------------------
