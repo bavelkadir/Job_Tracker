@@ -28,7 +28,7 @@ namespace Job_Tracker.Models
 
         // Varför använder vi en nullable DateTime för ResponseDate?
         // svar: För att hantera situationer där det kanske inte finns något svar än från arbetsgivaren
-        public Datetime? ResponseDate { get; set; } 
+        public DateTime? ResponseDate { get; set; } 
 
         public int SalaryExpectation { get; set; }
 

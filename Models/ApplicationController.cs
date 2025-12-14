@@ -10,7 +10,7 @@ namespace Job_Tracker.Models
     public class ApplicationController
     {
         // Instans av JobManager för att hantera jobbsökningslogiken
-        private readonly JobAppConsole _manager;
+        private readonly JobManager _manager;
         private readonly string[] _menuOptions =
         {
             // Menyval för användargränssnittet
@@ -28,12 +28,12 @@ namespace Job_Tracker.Models
         // Konstruktor för ApplicationController
         public ApplicationController()
         {
-            _manager = new JobAppConsole();
+            _manager = new JobManager();
             TestData();
         }
 
 
-        public void run()
+        public void Run()
         {
             bool running = true;
 
@@ -60,7 +60,7 @@ namespace Job_Tracker.Models
                         ShowStatistics();
                         break;
                     case 5:
-                        UpdateStatus();
+                        Updatestatus();
                         break;
                     case 6:
                         RemoveApplication();
@@ -248,7 +248,7 @@ namespace Job_Tracker.Models
 
 
         // Uppdaterar statusen för en ansökan baserat på företagsnamn
-        private void UpdateStatus()
+        private void Updatestatus()
         {
  
             Console.Clear();
@@ -260,8 +260,7 @@ namespace Job_Tracker.Models
             Console.WriteLine("\nVälj ny status:");
             var newStatus = ReadStatusFromUser();
 
-            // Uppdatera statusen i JobManager
-            bool updated = _manager.UpdateStatus(companyName, newStatus);   
+            bool updated = _manager.Updatestatus(companyName, newStatus);   
 
             // Visa resultatmeddelande baserat på om uppdateringen lyckades eller inte
             if (updated)

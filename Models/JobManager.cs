@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Job_Tracker.Models
 {
-    public class JobAppConsole
+    public class JobManager
     {
 
         // koden neddan är en lista som lagrar alla jobbsökningsposter om det inte finns någon lista skapas en ny tom lista
